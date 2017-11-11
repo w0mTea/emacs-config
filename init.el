@@ -7,6 +7,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; initialize el-get
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (let ((el-get-path
        (concat user-emacs-directory "el-get/el-get")))
   (add-to-list 'load-path el-get-path))
@@ -28,6 +35,7 @@
    helm                                 ; helm
    undo-tree                            ; better undo and redo
    idris-mode                           ; idris mode
+   company-mode                         ; company mode
    switch-window))                      ; takes over C-x o
 
 (setq my:el-get-packages
@@ -69,6 +77,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                    Basic Settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; enable ligature for mac port
+(mac-auto-operator-composition-mode)
+
+;; enable company mode
+(global-company-mode)
 
 ;; disable the ugly tool bar
 (tool-bar-mode -1)

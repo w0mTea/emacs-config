@@ -80,6 +80,10 @@
 (define-key idris-hole-list-mode-map (kbd "n") 'forward-button)
 (define-key idris-hole-list-mode-map (kbd "p") 'backward-button)
 
+;; popwin bindings
+(defun set-popwin-key-bindings ()
+  (global-set-key (kbd "C-x C-p") popwin:keymap))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                    Basic Settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -124,6 +128,7 @@
 ;; enable popwin
 (require 'popwin)
 (popwin-mode 1)
+(set-popwin-key-bindings)
 ;;; popwin configuration for idris related mode
 (push 'idris-compiler-notes-mode
       popwin:special-display-config)

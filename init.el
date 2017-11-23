@@ -36,6 +36,8 @@
    undo-tree                            ; better undo and redo
    idris-mode                           ; idris mode
    company-mode                         ; company mode
+   rainbow-delimiters                   ; colorful parentheses
+   popwin                               ; popup window manager
    switch-window))                      ; takes over C-x o
 
 (setq my:el-get-packages
@@ -119,6 +121,25 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 (when window-system (set-exec-path-from-shell-PATH))
 
+;; enable popwin
+(require 'popwin)
+(popwin-mode 1)
+;;; popwin configuration for idris related mode
+(push 'idris-compiler-notes-mode
+      popwin:special-display-config)
+(push '(idris-hole-list-mode
+	:noselect t
+	:position bottom
+	:stick t)
+      popwin:special-display-config)
+
+;; enable rainbow delimiters
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; enable electric pair and quote mode
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+(add-hook 'prog-mode-hook 'electric-quote-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                    Custom Set Variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -131,10 +152,17 @@
  '(custom-enabled-themes (quote (idea-darkula)))
  '(custom-safe-themes
    (quote
-    ("02591317120fb1d02f8eb4ad48831823a7926113fa9ecfb5a59742420de206e0" default))))
+    ("02591317120fb1d02f8eb4ad48831823a7926113fa9ecfb5a59742420de206e0" default)))
+ '(rainbow-delimiters-max-face-count 7))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "red"))))
+ '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "cyan"))))
+ '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "dark orange"))))
+ '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "DodgerBlue1"))))
+ '(rainbow-delimiters-depth-5-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow2"))))
+ '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "purple1"))))
+ '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "spring green")))))

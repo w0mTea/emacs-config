@@ -28,8 +28,6 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
-
 ;; set el-get packages
 (setq
  my:el-get-packages
@@ -147,6 +145,9 @@
 ;; enable electric pair and quote mode
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 (add-hook 'prog-mode-hook 'electric-quote-mode)
+
+;; enable show-paren-mode
+(add-hook 'prog-mode-hook 'show-paren-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                    Custom Set Variables

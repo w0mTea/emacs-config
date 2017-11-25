@@ -14,12 +14,8 @@
 
 ;; initialize el-get
 (let ((el-get-path
-       (concat user-emacs-directory "el-get/el-get"))
-      (el-get-user-repice-path
-       (concat user-emacs-directory "el-get-user/recipes")))
-  (progn
-    (add-to-list 'load-path el-get-path)
-    (add-to-list 'el-get-recipe-path el-get-user-repice-path)))
+       (concat user-emacs-directory "el-get/el-get")))
+  (add-to-list 'load-path el-get-path))
 
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -27,6 +23,10 @@
        "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)))
+
+(let ((el-get-user-recipe-path
+       (concat user-emacs-directory "el-get-user/recipes")))
+  (add-to-list 'el-get-recipe-path el-get-user-recipe-path))
 
 ;; set el-get packages
 (setq

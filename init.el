@@ -6,17 +6,20 @@
 ;                      Set Up Package Manager and Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; initialize el-get
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; initialize el-get
 (let ((el-get-path
-       (concat user-emacs-directory "el-get/el-get")))
-  (add-to-list 'load-path el-get-path))
+       (concat user-emacs-directory "el-get/el-get"))
+      (el-get-user-repice-path
+       (concat user-emacs-directory "el-get-user/recipes")))
+  (progn
+    (add-to-list 'load-path el-get-path)
+    (add-to-list 'el-get-recipe-path el-get-user-repice-path)))
 
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer

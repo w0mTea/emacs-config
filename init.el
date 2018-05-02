@@ -39,6 +39,8 @@
    company-mode                         ; company mode
    rainbow-delimiters                   ; colorful parentheses
    popwin                               ; popup window manager
+   magit                                ; git
+   magit-gitflow                        ; git flow
    switch-window))                      ; takes over C-x o
 
 (setq my:el-get-packages
@@ -80,6 +82,7 @@
 ;; idris bindings
 (define-key idris-hole-list-mode-map (kbd "n") 'forward-button)
 (define-key idris-hole-list-mode-map (kbd "p") 'backward-button)
+(define-key idris-mode-map (kbd "C-c C-q") 'idris-quit)
 
 ;; popwin bindings
 (defun set-popwin-key-bindings ()
@@ -88,6 +91,9 @@
 ;; indent related bindings
 (global-set-key (kbd "M-]") 'indent-rigidly-right)
 (global-set-key (kbd "M-[") 'indent-rigidly-left)
+
+;; magit
+(define-key prog-mode-map (kbd "C-x C-g") 'magit-status)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                    Basic Settings
@@ -142,6 +148,12 @@
 ;;; popwin for idris
 (push 'idris-compiler-notes-mode
       popwin:special-display-config)
+(push '(idris-repl-mode
+	:noselect nil
+	:position bottom
+	:height 0.4
+	:stick t)
+      popwin:special-display-config)
 (push '(idris-hole-list-mode
 	:noselect t
 	:position bottom
@@ -149,7 +161,7 @@
 	:stick t)
       popwin:special-display-config)
 (push '(idris-info-mode
-	:noselect t
+	:noselect nil
 	:position bottom
 	:height 0.2
 	:stick t)
@@ -161,6 +173,20 @@
 	:width 0.3)
       popwin:special-display-config)
 
+;;; popwin for helm
+(push '("*helm M-x*"
+	:position bottom
+	:height 0.3
+	:stick t
+	:noselect nil)
+      popwin:special-display-config)
+(push '("*helm find files*"
+	:position bottom
+	:height 0.3
+	:stick t
+	:noselect nil)
+      popwin:special-display-config)
+
 ;; enable rainbow delimiters
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
@@ -170,6 +196,9 @@
 
 ;; enable show-paren-mode
 (add-hook 'prog-mode-hook 'show-paren-mode)
+
+;; enable magit gitflow
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                    Custom Set Variables

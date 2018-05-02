@@ -133,17 +133,32 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 (when window-system (set-exec-path-from-shell-PATH))
 
-;; enable popwin
+;; popwin
+;;; enable popwin
 (require 'popwin)
 (popwin-mode 1)
 (set-popwin-key-bindings)
-;;; popwin configuration for idris related mode
+
+;;; popwin for idris
 (push 'idris-compiler-notes-mode
       popwin:special-display-config)
 (push '(idris-hole-list-mode
 	:noselect t
 	:position bottom
+	:height 0.4
 	:stick t)
+      popwin:special-display-config)
+(push '(idris-info-mode
+	:noselect t
+	:position bottom
+	:height 0.2
+	:stick t)
+      popwin:special-display-config)
+
+;;; popwin for unto-tree
+(push '(undo-tree-mode
+	:position right
+	:width 0.3)
       popwin:special-display-config)
 
 ;; enable rainbow delimiters

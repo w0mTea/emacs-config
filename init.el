@@ -43,7 +43,7 @@
 
 (setq my:el-get-packages
       (append my:el-get-packages
-              (mapcar #'el-get-source-name el-get-sources)))
+	      (mapcar #'el-get-source-name el-get-sources)))
 
 ;; install new packages and init already installed packages
 (el-get 'sync my:el-get-packages)
@@ -70,7 +70,7 @@
   (if (eq system-type 'darwin)
       (progn ;; set for mac
 	(global-set-key (kbd "M-z") 'undo)
-        (global-set-key (kbd "M-Z") 'undo-tree-redo))
+	(global-set-key (kbd "M-Z") 'undo-tree-redo))
     (progn ;; set for windows & linux
       (global-set-key (kbd "C-z") 'undo)
       (global-set-key (kbd "C-S-z") 'undo-tree-redo))
@@ -84,6 +84,10 @@
 ;; popwin bindings
 (defun set-popwin-key-bindings ()
   (global-set-key (kbd "C-x C-p") popwin:keymap))
+
+;; indent related bindings
+(global-set-key (kbd "M-]") 'indent-rigidly-right)
+(global-set-key (kbd "M-[") 'indent-rigidly-left)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                    Basic Settings
@@ -112,15 +116,18 @@
 (setq linum-format 'linum-format-func)
 (add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
+;; clean up whitespaces before saving
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
 ;; set font
 (set-frame-font "-*-Fira Code-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1" nil t)
 
 ;; set PATH
 (defun set-exec-path-from-shell-PATH ()
   (let ((path-from-shell (replace-regexp-in-string
-                          "[ \t\n]*$"
-                          ""
-                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+			  "[ \t\n]*$"
+			  ""
+			  (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
     (setenv "PATH" path-from-shell)
     (setq eshell-path-env path-from-shell) ; for eshell users
     (setq exec-path (split-string path-from-shell path-separator))))

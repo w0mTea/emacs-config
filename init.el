@@ -135,6 +135,9 @@
 (setq linum-format 'linum-format-func)
 (add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
+;; column number
+(add-hook 'prog-mode-hook (lambda () (column-number-mode 1)))
+
 ;; clean up whitespaces before saving
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
@@ -212,6 +215,9 @@
 
 ;; enable magit gitflow
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+
+;; maximum the emacs frame after starting up
+(toggle-frame-maximized)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                    Custom Set Variables

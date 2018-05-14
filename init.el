@@ -42,6 +42,7 @@
    magit                                ; git
    magit-gitflow                        ; git flow
    projectile                           ; project management
+   helm-projectile                      ; helm projectile
    switch-window))                      ; takes over C-x o
 
 (setq my:el-get-packages
@@ -67,6 +68,7 @@
 ;; helm key bindings
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
 
 ;; undo tree key bindings
 (defun set-undo-tree-key-bindings ()
@@ -115,6 +117,16 @@
 
 ;; stop creating backup~ files
 (setq make-backup-files nil)
+
+;; projectile
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(setq projectile-switch-project-action 'helm-projectile)
+(setq projectile-enable-caching t)
+
+;; helm
+;;; helm-projectile
+(helm-projectile-on)
 
 ;; line number
 (defun linum-format-func (line)
@@ -214,6 +226,7 @@
  '(custom-safe-themes
    (quote
     ("02591317120fb1d02f8eb4ad48831823a7926113fa9ecfb5a59742420de206e0" default)))
+ '(package-selected-packages (quote (ivy)))
  '(rainbow-delimiters-max-face-count 7))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

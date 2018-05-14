@@ -2,4 +2,7 @@ SessionDesktop.el
 auto-save-list
 el-get/
 elpa/
+eshell/
 projectile-bookmarks.eld
+recentf
+/projectile.cache

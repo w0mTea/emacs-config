@@ -41,6 +41,7 @@
    popwin                               ; popup window manager
    magit                                ; git
    magit-gitflow                        ; git flow
+   projectile                           ; project management
    switch-window))                      ; takes over C-x o
 
 (setq my:el-get-packages

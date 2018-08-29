@@ -11,6 +11,8 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;; initialize el-get
 (let ((el-get-path
@@ -43,6 +45,8 @@
    magit-gitflow                        ; git flow
    projectile                           ; project management
    helm-projectile                      ; helm projectile
+   flycheck                             ; syntax check
+   ;; dante                                ; haskell
    switch-window))                      ; takes over C-x o
 
 (setq my:el-get-packages
@@ -232,7 +236,7 @@
  '(custom-safe-themes
    (quote
     ("02591317120fb1d02f8eb4ad48831823a7926113fa9ecfb5a59742420de206e0" default)))
- '(package-selected-packages (quote (ivy)))
+ '(package-selected-packages (quote (haskell-mode ivy)))
  '(rainbow-delimiters-max-face-count 7))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

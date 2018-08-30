@@ -1,8 +1,13 @@
 ;; Some common and basic configurations
 
 
-;; enable ligature for mac port
-(mac-auto-operator-composition-mode)
+;; mac specific settings
+(when (eq system-type 'darwin)
+  (mac-auto-operator-composition-mode) ;; enable ligature for mac port
+  (setq mac-right-command-modifier 'meta)
+  (setq mac-option-modifier 'alt)
+  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+  )
 
 ;; maximum the emacs frame after starting up
 (toggle-frame-maximized)

@@ -18,10 +18,8 @@
 
 ;; Initialize packages
 
-;;; Color theme I use
-(use-package idea-darkula-theme)
-
 ;;; helm
 (require 'package-init-helm)
+
 
 (provide 'init-packages)

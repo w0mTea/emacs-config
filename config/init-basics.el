@@ -1,4 +1,4 @@
-; Some basic configurations
+; Some common and basic configurations
 
 ;; enable ligature for mac port
 (mac-auto-operator-composition-mode)
@@ -28,6 +28,23 @@
 
 ;; clean up whitespaces before saving
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; undo tree
+(if (eq system-type 'darwin)
+    ;;; key bindings for mac
+    (use-package undo-tree
+       :bind (("C-x u" . undo-tree-visualize)
+	      ("M-z" . undo-tree-undo)
+	      ("M-Z" . undo-tree-redo)))
+
+  ;;; key bindings for windows & linux
+  (use-package undo-tree
+     :bind (("C-x u" . undo-tree-visualize)
+	    ("C-z" . undo-tree-undo)
+	    ("C-Z" . undo-tree-redo))))
+
+;; Color theme I use
+(use-package idea-darkula-theme)
 
 ;; set font
 (set-frame-font "-*-Fira Code-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1" nil t)

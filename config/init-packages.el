@@ -24,12 +24,29 @@
 
 ;; idris-mode                           ; idris mode
 ;; popwin                               ; popup window manager
-;; projectile                           ; project management
-;; helm-projectile                      ; helm projectile
 ;; switch-window))                      ; takes over C-x o
 
 ;;; helm
-(require 'package-init-helm)
+(use-package helm
+  :bind (("M-x" . helm-M-x)
+	 ("C-x C-f" . helm-find-files)
+	 ("C-x b" . helm-buffers-list)
+	 ("C-x C-r" . helm-recentf)))
+
+
+;;; projectile & helm-projectile
+(use-package helm-projectile
+  :demand
+
+  :init
+  ;; load projectile
+  (projectile-global-mode)
+  (setq projectile-completion-system 'helm)
+  (setq projectile-switch-project-action 'helm-projectile)
+  (setq projectile-enable-caching t)
+
+  :config
+  (helm-projectile-on))
 
 
 (provide 'init-packages)

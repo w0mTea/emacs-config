@@ -1,4 +1,5 @@
-; Some common and basic configurations
+;; Some common and basic configurations
+
 
 ;; enable ligature for mac port
 (mac-auto-operator-composition-mode)
@@ -19,7 +20,7 @@
 ;; line number
 (defun linum-format-func (line)
   (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
-     (propertize (format (format "%%%dd \u00bb" w) line) 'face 'linum)))
+    (propertize (format (format "%%%dd \u00bb" w) line) 'face 'linum)))
 (setq linum-format 'linum-format-func)
 (add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
@@ -33,15 +34,15 @@
 (if (eq system-type 'darwin)
     ;;; key bindings for mac
     (use-package undo-tree
-       :bind (("C-x u" . undo-tree-visualize)
-	      ("M-z" . undo-tree-undo)
-	      ("M-Z" . undo-tree-redo)))
+      :bind (("C-x u" . undo-tree-visualize)
+	     ("M-z" . undo-tree-undo)
+	     ("M-Z" . undo-tree-redo)))
 
   ;;; key bindings for windows & linux
   (use-package undo-tree
-     :bind (("C-x u" . undo-tree-visualize)
-	    ("C-z" . undo-tree-undo)
-	    ("C-Z" . undo-tree-redo))))
+    :bind (("C-x u" . undo-tree-visualize)
+	   ("C-z" . undo-tree-undo)
+	   ("C-Z" . undo-tree-redo))))
 
 ;; Color theme I use
 (use-package idea-darkula-theme)

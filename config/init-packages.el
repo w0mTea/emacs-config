@@ -1,4 +1,4 @@
-; Manage Packages
+;; Manage Packages
 
 ;; Initialize package.el
 (require 'package)
@@ -22,11 +22,11 @@
 
 ;; Initialize packages
 
-   ;; idris-mode                           ; idris mode
-   ;; popwin                               ; popup window manager
-   ;; projectile                           ; project management
-   ;; helm-projectile                      ; helm projectile
-   ;; switch-window))                      ; takes over C-x o
+;; idris-mode                           ; idris mode
+;; popwin                               ; popup window manager
+;; projectile                           ; project management
+;; helm-projectile                      ; helm projectile
+;; switch-window))                      ; takes over C-x o
 
 ;;; helm
 (require 'package-init-helm)

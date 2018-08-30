@@ -1,4 +1,5 @@
-; Coding related configurations
+;; Coding related configurations
+
 
 ;; Common coding configurations
 
@@ -27,9 +28,20 @@
   (rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "purple1"))))
   (rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "spring green")))))
 
+;;; Aggressive indent
+(use-package aggressive-indent
+  :hook (emacs-lisp-mode . aggressive-indent-mode))
+
+
 ;; Git related configurations
 (use-package magit
- :bind (:map prog-mode-map
+  :bind (:map prog-mode-map
 	      ("C-x C-g" . magit-status)))
+(use-package magit-gitflow
+  :hook (magit-mode . turn-on-magit-gitflow))
+
+
+;; Language related configurations
+
 
 (provide 'init-coding)

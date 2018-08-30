@@ -1,5 +1,5 @@
-; Configure some common keybindings
-; Package related keybindings are in init-packages.el or config files for that package
+;; Configure some common keybindings
+;; Package related keybindings are in init-packages.el or config files for that package
 
 ;; mac specific settings
 (when (eq system-type 'darwin)

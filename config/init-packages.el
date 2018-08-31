@@ -22,19 +22,31 @@
 
 ;; Initialize packages
 
-;; idris-mode                           ; idris mode
-;; popwin                               ; popup window manager
-;; switch-window))                      ; takes over C-x o
+;;; popwin
+(use-package popwin
+  :demand ;; load popwin when emacs starts
+  :bind-keymap
+  ("C-x C-p" . popwin:keymap)
+  :config
+  (popwin-mode))
+
 
 ;;; helm
 (use-package helm
   :bind (("M-x" . helm-M-x)
 	 ("C-x C-f" . helm-find-files)
 	 ("C-x b" . helm-buffers-list)
-	 ("C-x C-r" . helm-recentf)))
+	 ("C-x C-r" . helm-recentf))
+  :config ;; configure popwin for helm
+  (push '("*helm M-x*"
+	  :position bottom
+	  :height 0.3
+	  :stick t
+	  :noselect nil)
+	popwin:special-display-config))
 
 
-;; projectile & helm-projectile
+;;; projectile & helm-projectile
 (use-package helm-projectile
   :bind-keymap
   ("C-c C-p" . projectile-command-map)

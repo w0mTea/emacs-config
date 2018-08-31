@@ -38,7 +38,8 @@
   :bind (:map prog-mode-map
 	      ("C-x C-g" . magit-status)))
 (use-package magit-gitflow
-  :hook (magit-mode . turn-on-magit-gitflow))
+  :hook (magit-mode . turn-on-magit-gitflow)
+  :init (setq magit-gitflow-popup-key "C-M-f"))
 
 
 ;; Language related configurations

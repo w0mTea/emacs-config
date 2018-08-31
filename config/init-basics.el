@@ -49,6 +49,10 @@
 	   ("C-z" . undo-tree-undo)
 	   ("C-Z" . undo-tree-redo))))
 
+;; switch window
+(use-package switch-window
+  :bind ("C-x o" . switch-window))
+
 ;; Color theme I use
 (use-package idea-darkula-theme)
 

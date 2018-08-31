@@ -5,8 +5,8 @@
 ;; use emacs-china source instead
 ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(setq package-archives '(("gnu" . "https://elpa.emacs-china.org/gnu/")
-			 ("melpa" . "https://elpa.emacs-china.org/melpa/")
+(setq package-archives '(("melpa" . "https://elpa.emacs-china.org/melpa/")
+			 ("gnu" . "https://elpa.emacs-china.org/gnu/")
 			 ("org-cn" . "https://elpa.emacs-china.org/org/")))
 (package-initialize)
 
@@ -34,19 +34,18 @@
 	 ("C-x C-r" . helm-recentf)))
 
 
-;;; projectile & helm-projectile
+;; projectile & helm-projectile
 (use-package helm-projectile
-  :demand
+  :bind-keymap
+  ("C-c C-p" . projectile-command-map)
 
   :init
-  ;; load projectile
-  (projectile-global-mode)
-  (setq projectile-completion-system 'helm)
-  (setq projectile-switch-project-action 'helm-projectile)
-  (setq projectile-enable-caching t)
+  (projectile-mode)
 
   :config
-  (helm-projectile-on))
+  (setq projectile-enable-caching t)
+  (helm-projectile-on)
+  (setq projectile-completion-system 'helm))
 
 
 (provide 'init-packages)

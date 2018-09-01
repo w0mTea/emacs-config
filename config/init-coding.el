@@ -3,6 +3,9 @@
 
 ;; Common coding configurations
 
+;;; Never use tab to indent
+(setq-default indent-tabs-mode nil)
+
 ;;; Company mode
 (use-package company
   :hook (after-init . global-company-mode))
@@ -36,7 +39,7 @@
 ;; Git related configurations
 (use-package magit
   :bind (:map prog-mode-map
-	      ("C-x C-g" . magit-status)))
+              ("C-x C-g" . magit-status)))
 (use-package magit-gitflow
   :hook (magit-mode . turn-on-magit-gitflow)
   :init (setq magit-gitflow-popup-key "C-M-f"))
@@ -50,36 +53,57 @@
   :interpreter "idris"
 
   :bind (:map idris-hole-list-mode-map
-	      ("n" . forward-button)
-	      ("p" . backward-button)
+              ("n" . forward-button)
+              ("p" . backward-button)
 
-	      :map idris-mode-map
-	      ("C-c C-q" . idris-quit))
+              :map idris-mode-map
+              ("C-c C-q" . idris-quit))
   :config
   ;; unset "C-c C-p" which shadows the shortkey for projectile
   (define-key idris-mode-map (kbd "C-c C-p") nil)
 
   ;; popwin settings
   (push 'idris-compiler-notes-mode
-	popwin:special-display-config)
+        popwin:special-display-config)
   (push '(idris-repl-mode
-	  :noselect nil
-	  :position bottom
-	  :height 0.4
-	  :stick t)
-	popwin:special-display-config)
+          :noselect nil
+          :position bottom
+          :height 0.4
+          :stick t)
+        popwin:special-display-config)
   (push '(idris-hole-list-mode
-	  :noselect t
-	  :position bottom
-	  :height 0.4
-	  :stick t)
-	popwin:special-display-config)
+          :noselect t
+          :position bottom
+          :height 0.4
+          :stick t)
+        popwin:special-display-config)
   (push '(idris-info-mode
-	  :noselect nil
-	  :position bottom
-	  :height 0.2
-	  :stick t)
-	popwin:special-display-config))
+          :noselect nil
+          :position bottom
+          :height 0.2
+          :stick t)
+        popwin:special-display-config))
 
+
+;;; Haskell
+(use-package haskell-mode
+  :mode "\\.[l]hs\\'"
+  :interpreter "ghci"
+
+  :config
+  ;; popwin settings
+  (push '(interactive-haskell-mode
+          :noselect nil
+          :position bottom
+          :height 0.4
+          :stick t)
+        popwin:special-display-config))
+
+(use-package dante
+  :hook ((haskell-mode . dante-mode)
+         (haskell-mode . flycheck-mode))
+  :bind (:map dante-mode-map
+              ("C-c C-t" . dante-type-at)
+              ("C-c C-d i" . dante-info)))
 
 (provide 'init-coding)

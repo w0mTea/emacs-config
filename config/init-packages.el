@@ -6,8 +6,8 @@
 ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (setq package-archives '(("melpa" . "https://elpa.emacs-china.org/melpa/")
-			 ("gnu" . "https://elpa.emacs-china.org/gnu/")
-			 ("org-cn" . "https://elpa.emacs-china.org/org/")))
+                         ("gnu" . "https://elpa.emacs-china.org/gnu/")
+                         ("org-cn" . "https://elpa.emacs-china.org/org/")))
 (package-initialize)
 
 
@@ -34,16 +34,16 @@
 ;;; helm
 (use-package helm
   :bind (("M-x" . helm-M-x)
-	 ("C-x C-f" . helm-find-files)
-	 ("C-x b" . helm-buffers-list)
-	 ("C-x C-r" . helm-recentf))
+         ("C-x C-f" . helm-find-files)
+         ("C-x b" . helm-buffers-list)
+         ("C-x C-r" . helm-recentf))
   :config ;; configure popwin for helm
   (push '("*helm M-x*"
-	  :position bottom
-	  :height 0.3
-	  :stick t
-	  :noselect nil)
-	popwin:special-display-config))
+          :position bottom
+          :height 0.3
+          :stick t
+          :noselect nil)
+        popwin:special-display-config))
 
 
 ;;; projectile & helm-projectile

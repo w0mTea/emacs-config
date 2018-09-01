@@ -44,5 +44,42 @@
 
 ;; Language related configurations
 
+;;; Idris
+(use-package idris-mode
+  :mode "\\.idr\\’"
+  :interpreter "idris"
+
+  :bind (:map idris-hole-list-mode-map
+	      ("n" . forward-button)
+	      ("p" . backward-button)
+
+	      :map idris-mode-map
+	      ("C-c C-q" . idris-quit))
+  :config
+  ;; unset "C-c C-p" which shadows the shortkey for projectile
+  (define-key idris-mode-map (kbd "C-c C-p") nil)
+
+  ;; popwin settings
+  (push 'idris-compiler-notes-mode
+	popwin:special-display-config)
+  (push '(idris-repl-mode
+	  :noselect nil
+	  :position bottom
+	  :height 0.4
+	  :stick t)
+	popwin:special-display-config)
+  (push '(idris-hole-list-mode
+	  :noselect t
+	  :position bottom
+	  :height 0.4
+	  :stick t)
+	popwin:special-display-config)
+  (push '(idris-info-mode
+	  :noselect nil
+	  :position bottom
+	  :height 0.2
+	  :stick t)
+	popwin:special-display-config))
+
 
 (provide 'init-coding)

@@ -90,9 +90,12 @@
   :mode "\\.[l]hs\\'"
   :interpreter "ghci"
 
+  :bind
+  (("C-c C-l" . haskell-process-load-or-reload))
+
   :config
   ;; popwin settings
-  (push '(interactive-haskell-mode
+  (push '("*haskell*"
           :noselect nil
           :position bottom
           :height 0.4

@@ -32,6 +32,9 @@
 ;; column number
 (add-hook 'prog-mode-hook (lambda () (column-number-mode 1)))
 
+;; clean white spaces
+(global-set-key (kbd "C-M-w") 'whitespace-cleanup)
+
 ;; undo tree
 (if (eq system-type 'darwin)
     ;;; key bindings for mac

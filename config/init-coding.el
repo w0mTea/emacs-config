@@ -6,9 +6,21 @@
 ;;; Never use tab to indent
 (setq-default indent-tabs-mode nil)
 
+;;; Use 4 spaces as indentation
+(setq-default tab-width 4)
+
+;;; Lsp mode
+(use-package lsp-mode)
+(use-package lsp-ui)
+
 ;;; Company mode
 (use-package company
   :hook (after-init . global-company-mode))
+
+(use-package company-lsp
+  :after company
+  :config
+  (push 'company-lsp company-backends))
 
 ;;; Show parentheses
 (add-hook 'prog-mode-hook 'show-paren-mode)
@@ -108,5 +120,30 @@
   :bind (:map dante-mode-map
               ("C-c C-t" . dante-type-at)
               ("C-c C-d i" . dante-info)))
+
+
+;;; C/C++
+(use-package cquery
+  :preface
+  (defun my-c-mode-common-hook ()
+    ;; indentation
+    (c-set-offset 'substatement-open 0)
+    (setq c-basic-offset 4)
+    (setq c-indent-level 4)
+    (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
+
+    (lsp-cquery-enable))
+
+  :hook (c-mode-common . my-c-mode-common-hook)
+
+  :config
+  ;; disable C-c C-p which shadows projectile
+  (define-key c++-mode-map (kbd "C-c C-p") nil))
+
+
+;;; Python
+(use-package lsp-python
+  :hook (python-mode . lsp-python-enable))
+
 
 (provide 'init-coding)

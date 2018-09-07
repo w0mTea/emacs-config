@@ -49,7 +49,7 @@
 ;;; projectile & helm-projectile
 (use-package helm-projectile
   :bind-keymap
-  ("C-c C-p" . projectile-command-map)
+  ("C-c p" . projectile-command-map)
 
   :init
   (projectile-mode)

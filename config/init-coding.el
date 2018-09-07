@@ -71,9 +71,6 @@
               :map idris-mode-map
               ("C-c C-q" . idris-quit))
   :config
-  ;; unset "C-c C-p" which shadows the shortkey for projectile
-  (define-key idris-mode-map (kbd "C-c C-p") nil)
-
   ;; popwin settings
   (push 'idris-compiler-notes-mode
         popwin:special-display-config)
@@ -134,11 +131,7 @@
 
     (lsp-cquery-enable))
 
-  :hook (c-mode-common . my-c-mode-common-hook)
-
-  :config
-  ;; disable C-c C-p which shadows projectile
-  (define-key c++-mode-map (kbd "C-c C-p") nil))
+  :hook (c-mode-common . my-c-mode-common-hook))
 
 
 ;;; Python

@@ -48,13 +48,26 @@
   :hook (emacs-lisp-mode . aggressive-indent-mode))
 
 
-;; Git related configurations
+;;; Git related configurations
 (use-package magit
   :bind (:map prog-mode-map
               ("C-x C-g" . magit-status)))
 (use-package magit-gitflow
   :hook (magit-mode . turn-on-magit-gitflow)
   :init (setq magit-gitflow-popup-key "C-M-f"))
+
+
+;;; helm xref
+(use-package helm-xref
+  :after helm
+  :init (setq xref-show-xrefs-function 'helm-xref-show-xrefs))
+
+
+;;; Yasnippets
+(use-package yasnippet
+  :hook (prog-mode . yas-minor-mode)
+  :config
+  (yas-reload-all))
 
 
 ;; Language related configurations
@@ -129,9 +142,15 @@
     (setq c-indent-level 4)
     (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
 
+    ;; flycheck
+    (flycheck-mode)
+
     (lsp-cquery-enable))
 
   :hook (c-mode-common . my-c-mode-common-hook))
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode))
 
 
 ;;; Python

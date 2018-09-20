@@ -62,5 +62,8 @@
 (use-package ox-gfm
   :after ox)
 
+(use-package org2jekyll
+  :after org)
+
 
 (provide 'init-org)

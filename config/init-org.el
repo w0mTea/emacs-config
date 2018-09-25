@@ -5,6 +5,9 @@
   :mode ("\\.org\\’" . org-mode)
 
   :config
+  ;; Set image width when use org-toggle-inline-image
+  (setq org-image-actual-width '(500))
+
   ;; Add magit keybingings for org-mode
   (define-key org-mode-map (kbd "C-x C-g") 'magit-status)
 

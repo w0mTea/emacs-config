@@ -18,6 +18,8 @@
 ;; Org mode configurations
 (require 'init-org)
 
+;; Personal info that should not be tracked by git
+(require 'init-personal-info)
 
 ;; Custom variables
 (custom-set-variables

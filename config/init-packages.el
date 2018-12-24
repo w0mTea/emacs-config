@@ -3,11 +3,11 @@
 ;; Initialize package.el
 (require 'package)
 ;; use emacs-china source instead
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(setq package-archives '(("melpa" . "https://elpa.emacs-china.org/melpa/")
-                         ("gnu" . "https://elpa.emacs-china.org/gnu/")
-                         ("org-cn" . "https://elpa.emacs-china.org/org/")))
+(setq package-archives '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+                         ("gnu-cn" . "http://elpa.emacs-china.org/gnu/")
+                         ("org-cn" . "http://elpa.emacs-china.org/org/")
+			             ("melpa" . "http://melpa.org/packages/")
+			             ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 
 

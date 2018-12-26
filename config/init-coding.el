@@ -158,4 +158,9 @@
   :hook (python-mode . lsp-python-enable))
 
 
+;;; Clojure
+(use-package clojure-mode
+  :mode "\\.clj\\'")
+(use-package cider)
+
 (provide 'init-coding)

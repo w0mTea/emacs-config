@@ -60,4 +60,7 @@
   (setq projectile-completion-system 'helm))
 
 
+;;; nlinum-mode
+(use-package nlinum)
+
 (provide 'init-packages)

@@ -23,11 +23,9 @@
 (setq recentf-max-menu-items 25)
 
 ;; line number
-(defun linum-format-func (line)
-  (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
-    (propertize (format (format "%%%dd \u00bb" w) line) 'face 'linum)))
-(setq linum-format 'linum-format-func)
-(add-hook 'find-file-hook (lambda () (linum-mode 1)))
+(setq nlinum-format "%d \u00bb")
+
+(add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
 
 ;; column number
 (add-hook 'prog-mode-hook (lambda () (column-number-mode 1)))

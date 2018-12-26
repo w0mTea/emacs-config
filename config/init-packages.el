@@ -63,4 +63,8 @@
 ;;; nlinum-mode
 (use-package nlinum)
 
+;;; adoc-mode
+(use-package adoc-mode
+  :mode "\\.asciidoc$")
+
 (provide 'init-packages)

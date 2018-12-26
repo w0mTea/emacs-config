@@ -30,7 +30,7 @@
  '(org-export-backends (quote (ascii html latex md)))
  '(package-selected-packages
    (quote
-    (nlinum org2jekyll ox-gfm yasnippet helm-xref org cquery lsp-python company-lsp lsp-ui lsp-mode dante idris-mode popwin switch-window helm-projectile use-package undo-tree rainbow-delimiters magit-gitflow idea-darkula-theme helm company aggressive-indent))))
+    (adoc-mode nlinum org2jekyll ox-gfm yasnippet helm-xref org cquery lsp-python company-lsp lsp-ui lsp-mode dante idris-mode popwin switch-window helm-projectile use-package undo-tree rainbow-delimiters magit-gitflow idea-darkula-theme helm company aggressive-indent))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -51,7 +51,7 @@
 (use-package switch-window
   :bind ("C-x o" . switch-window))
 
-;; Color theme I use
+;; color theme I use
 (use-package idea-darkula-theme)
 
 ;; set font

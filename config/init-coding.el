@@ -29,6 +29,11 @@
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 (add-hook 'prog-mode-hook 'electric-quote-mode)
 
+
+;;; Start hs-minor-mode
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+
+
 ;;; Rainbow delimiters
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode)
